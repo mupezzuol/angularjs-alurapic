@@ -1,12 +1,144 @@
-############################################## INICIO
+############################################## INICIO - GET STARTED
 
-1. Baixar os programas (animate, resource, route etc...) do AngularJS que serão usados;
-
-2. O Angular funciona no padrão MVC
+1. Baixar os programas (animate, resource, route etc...) do AngularJS que serão usados nas páginas. 
 
 
+2. Nas páginas que forem utilizar os recursos do AngularJS deverá ser importado o '.js' respectivo, pode ser o 'core'
+do AngularJS ou outros programas.
+Exemplo: <script src="js/angular.min.js"></script>
+
+
+3. O Angular organiza seu funcionamento através de MÓDULOS, e para o uso inicial do AngularJS precisamos importar o
+'core' do angularJs (angular.min.js) que fica as principais funcionalidades básicas do framework.
+
+
+- Com essas etapas iniciais já podemos usar os recursos básicos do AngularJS em nossa aplicação.
+
+##########################################################################################################################
 
 
 
 
-###################################################################################################
+
+############################################## Hello World
+
+1. Criando o alicerce da nossa aplicação, o módulo principal, quando é carregado a nossa aplicação ele é chamado.
+Exemplo:
+angular.module('alurapic', []);
+
+
+2. Para dizer para a aplicação subir nosso módulo principal do angular já criado precisamos mostrar para ela, faremos da seguinte forma:
+Exemplo: Colocamos em nossa tag 'html' é uma convenção, para ele entender nosso módulo do Angular criado.
+<html lang="pt-br" ng-app="alurapic">
+
+OBS: 
+- Quando o navegador subir a nossa página o Angular vai entender que teremos que carregar esse módulo principal criado;
+- Não basta importar o Angular, devemos INICIALIZAR, e fazemos isso chamando nosso módulo através do 'ng-app'
+
+
+3. Agora nós precisamos passar alguns dados para nossa VIEW através do Angular Expression, dessa forma criaremos um Controller
+
+
+4. Criamos um Controller, porém eu quero que esse controller faça parte do nosso modulo principal, e através desse modulo principal
+será criado um controller.
+Exemplo:
+angular.module('alurapic').controller('FotosController', function(){ //tudo que meu controller poderá fazer });
+
+OBS:
+- Quando usamos "angular.module('alurapic', [])" com os '[]' arrays vazio, indica que estamos CRIANDO um modulo, por isso
+nesse exemplo não usamos o array vazio, pois estamos indicando que queremos criar um controller em um módulo ja existente,
+cujo nome é 'alurapic';
+- Controller recebe dois parametros, 1º é o nome o 2º é uma function, onde tudo dentro dela é o que a Controller fará.
+
+
+5. Preciso fazer com que minha página entenda qual é meu controller e onde eu quero utiliza-lo
+Exemplo:
+<body ng-controller="FotosController">
+
+OBS:
+- Nesse caso colocamos nossa controller na tag 'body' porém pode ser em qualquer tag, ou seja, posso ter vários controllers em diversas páginas
+- Colocar controller em tag do html diferentes faz com que dividimos as responsabilidades da controller
+- O Controller fará todo o controle do que tiver dentro da tag respectiva, nesse caso tudo dentro de body nossa controller irá controlar,
+caso seja chamado algo da controller que está fora da tag 'body' não será reconhecido, pois estará fora do escopo da controller/tag.
+
+
+6. 
+
+
+
+##########################################################################################################################
+
+
+
+
+
+############################################## DIRETIVAS (ng-xxxx)
+
+Os atributos/nomes abaixo são chamadas de DIRETIVAS:
+- ng-app
+- ng-controller
+
+Diretivas no AngularJS, ensinam novos truques para o navegador, por exemplo:
+
+-> A diretiva 'ng-app' ele faz com que o navegador saiba fazer a pagina carregar o module principal da aplicação angular;
+-> A diretiva 'ng-controller' faz o angular instanciar o Controller e faz com que o navegador faça a associação da Controller com elementos do DOM,
+vale lembrar que a Controller só tem acesso aos elementos onde ela foi inserida, ou seja, numa tag 'body' se eu declarar uma expressão fora da
+tag body eu não vou conseguir acessar, pois meu controller só enxergar tudo dentro da tag 'body', ou seja, as minhas expressões precisam estar dentro
+do escopo daquela tag/controller
+
+
+-------------------------------------------------------------------------------------------------------------------------
+DOM -> Document Object Model
+- O Modelo de Documento por Objetos é uma convenção multiplataforma e independente de linguagem para representação 
+e interação com objetos em documentos HTML, XHTML e XML;
+- Os objetos na árvore DOM podem ser endereçados e manipulados pelo uso de métodos sobre os objetos.
+-------------------------------------------------------------------------------------------------------------------------
+
+
+##########################################################################################################################
+
+
+
+
+
+############################################## Angular Expression {{angular.expression}}
+
+Angular Expression é a forma de nós preenchermos as lacunas em nossas páginas.
+Exemplo:
+<img src="{{foto.url}}" alt="{{foto.titulo}}">
+
+OBS:
+- As informações contidas na expressão virá da Controller, ela é responsável por deixar essas expressões acessiveis
+- As expressões são atributos que foram criado na Controller, a empressão é um get/set para preencher as lacunas das páginas
+
+
+
+##########################################################################################################################
+
+
+
+
+
+############################################## $scope -> Escopo dos módulos
+
+$scope -> É usado para disponibilizarmos dados para a VIEW
+Exemplo:
+Se colocarmos um controller na tag 'body' tudo que tiver dentro de body (div, table, p, img, h1) será vísivel ao nosso controller e vice-versa.
+
+OBS:
+- O $scope é uma dependencia do Controller, o que o Angular faz para nós é INJETAR essa dependencia, onde trará tudo do DOM e vice-versa, porém
+respeitando as tags respectivas onde o controller foi definido;
+- $scope é um POJO, ou seja, um objeto, ou seja, posso adicionar propriedade dinamicamente, e em nossa view enxergarmos essa propriedade setada no $scope
+Exemplo:
+$scope.variavel = {
+        descricao : "Adicionando atributo dinamicamento no meu POJO"
+    };
+- Tudo que eu penduro no meu $scope é visualizado pela VIEW
+- Angular ficou famoso pq foi um dos primeiros a aceitar 'injeção de dependencia';
+- Você deve usar com o '$' se não será somente um atributo normal.
+
+
+
+##########################################################################################################################
+
+
