@@ -1,0 +1,12 @@
+############################################## INICIO
+
+1. Baixar os programas (animate, resource, route etc...) do AngularJS que serão usados;
+
+2. O Angular funciona no padrão MVC
+
+
+
+
+
+
+###################################################################################################
