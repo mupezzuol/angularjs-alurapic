@@ -1,2 +1,2 @@
 //Criando módulo principal do angular
-angular.module('alurapic', []);
+angular.module('angularpic', []);
