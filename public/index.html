@@ -1,21 +1,71 @@
 <!DOCTYPE html>
 <html lang="pt-br" ng-app="alurapic">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width">
-        <title>AngularJS - Alurapic</title>
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-        <script src="js/lib/angular.min.js"></script>
-        <script src="js/main.js"></script>
-        <script src="js/controllers/fotos-controller.js"></script>
-    </head>
-    <body ng-controller="FotosController">
 
-        <div class="container">
-            <h1 class="text-center">Alurapic</h1>
-            <img class="img-responsive center-block" src="{{foto.url}}" alt="{{foto.titulo}}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>AngularJS - Alurapic</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <script src="js/lib/angular.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/controllers/fotos-controller.js"></script>
+</head>
+
+<body ng-controller="FotosController">
+
+    <!-- INICIO Container Principal -->
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Alurapic</h1>
+            <p>Aprendizado com AngularJS V1.3.15</p>
         </div>
-        
-    </body>
+
+        <!-- INICIO Linha das fotos -->
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="card">
+                    <img class="card-img-top" src="{{foto.url}}" alt="{{foto.titulo}}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{foto.titulo}}</h5>
+                        <a href="#" class="btn btn-primary">Saiba mais...</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card">
+                    <img class="card-img-top" src="{{foto.url}}" alt="{{foto.titulo}}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{foto.titulo}}</h5>
+                        <a href="#" class="btn btn-primary">Saiba mais...</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card">
+                    <img class="card-img-top" src="{{foto.url}}" alt="{{foto.titulo}}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{foto.titulo}}</h5>
+                        <a href="#" class="btn btn-primary">Saiba mais...</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card">
+                    <img class="card-img-top" src="{{foto.url}}" alt="{{foto.titulo}}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{foto.titulo}}</h5>
+                        <a href="#" class="btn btn-primary">Saiba mais...</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- FIM Linha das fotos -->
+
+    </div>
+    <!-- FIM Container Principal -->
+
+</body>
+
 </html>
