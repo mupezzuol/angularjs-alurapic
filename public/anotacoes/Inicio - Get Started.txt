@@ -62,9 +62,14 @@ OBS:
 caso seja chamado algo da controller que está fora da tag 'body' não será reconhecido, pois estará fora do escopo da controller/tag.
 
 
-6. 
-
-
+6. Após relacionarmos nossa Controller com a nossa página, basta utilizar as Angular Expression para acessar os dados.
+Exemplo:
+<body ng-controller="FotosController">
+    <div class="container">
+        <h1 class="text-center">Alurapic</h1>
+        <img class="img-responsive center-block" src="{{foto.url}}" alt="{{foto.titulo}}">
+    </div>
+</body>
 
 ##########################################################################################################################
 
@@ -94,7 +99,6 @@ e interação com objetos em documentos HTML, XHTML e XML;
 - Os objetos na árvore DOM podem ser endereçados e manipulados pelo uso de métodos sobre os objetos.
 -------------------------------------------------------------------------------------------------------------------------
 
-
 ##########################################################################################################################
 
 
@@ -110,8 +114,6 @@ Exemplo:
 OBS:
 - As informações contidas na expressão virá da Controller, ela é responsável por deixar essas expressões acessiveis
 - As expressões são atributos que foram criado na Controller, a empressão é um get/set para preencher as lacunas das páginas
-
-
 
 ##########################################################################################################################
 
@@ -137,8 +139,26 @@ $scope.variavel = {
 - Angular ficou famoso pq foi um dos primeiros a aceitar 'injeção de dependencia';
 - Você deve usar com o '$' se não será somente um atributo normal.
 
-
-
 ##########################################################################################################################
 
+
+
+
+
+############################################## Exemplo Simples -> Módulo Principal + Controller
+
+//Criação do módulo principal
+angular.module('alurapic', []);
+
+//Criando Controller
+angular.module('alurapic').controller('FotosController', function($scope) {
+
+    //Criando Object JavaScript
+    $scope.foto = {
+        titulo : 'Leão',
+        url : 'http://www.fundosanimais.com/Minis/leoes.jpg'
+    };
+});
+
+##########################################################################################################################
 
