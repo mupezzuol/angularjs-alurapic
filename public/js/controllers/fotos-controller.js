@@ -1,13 +1,17 @@
-//Criação de um Controller atráves de um módulo (alurapic) já existente, caso quisesse criar um outro módulo eu deveria usar '[]' array vazio
+//Criação de um Controller atráves de um módulo (angularpic) já existente, caso quisesse criar um outro módulo eu deveria usar '[]' array vazio
 //Controller nomenclatura é igual utiliada em Java, porém nossos '.js' deve ser tudo minusculo separado por '-' 
-//Toda variavel dentro de uma 'function' é privada, ela não é acessado fora do escopo da função, por isso usamos o '$scope'
-//$scope -> É usado para disponibilizarmos dados para a VIEW
-angular.module('angularpic').controller('FotosController', function($scope) {
+angular.module('angularpic').controller('FotosController', function($scope, $http) {
 
-    //Criando Object JavaScript
-    $scope.foto = {
-        titulo : 'Leão',
-        url : 'http://www.fundosanimais.com/Minis/leoes.jpg'
-    };
+    //Criando Array Vazio -> ng-repeat="foto in fotos" fotos é a variavel que retornamos para a página e usamos para fazer o 'for'
+    $scope.fotos = [];
+
+    $http.get('/v1/fotos')
+    .success(function(retorno) {
+        console.log(retorno);
+        $scope.fotos = retorno;//Não precisa fazer 'retorno.data'
+    })
+    .error(function(erro) {
+        console.log(erro);
+    });
 
 });

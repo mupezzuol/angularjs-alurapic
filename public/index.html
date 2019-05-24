@@ -23,7 +23,7 @@
 
         <!-- INICIO Linha das fotos -->
         <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-3" ng-repeat="foto in fotos">
                 <div class="card">
                     <img class="card-img-top" src="{{foto.url}}" alt="{{foto.titulo}}">
                     <div class="card-body">
@@ -32,34 +32,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-3">
-                <div class="card">
-                    <img class="card-img-top" src="{{foto.url}}" alt="{{foto.titulo}}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{foto.titulo}}</h5>
-                        <a href="#" class="btn btn-primary">Saiba mais...</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="card">
-                    <img class="card-img-top" src="{{foto.url}}" alt="{{foto.titulo}}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{foto.titulo}}</h5>
-                        <a href="#" class="btn btn-primary">Saiba mais...</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="card">
-                    <img class="card-img-top" src="{{foto.url}}" alt="{{foto.titulo}}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{foto.titulo}}</h5>
-                        <a href="#" class="btn btn-primary">Saiba mais...</a>
-                    </div>
-                </div>
-            </div>
-
         </div>
         <!-- FIM Linha das fotos -->
 

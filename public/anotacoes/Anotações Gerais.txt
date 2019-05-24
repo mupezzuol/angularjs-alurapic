@@ -1,0 +1,88 @@
+############################################## VARIAVEIS DE ESCOPO DO ANGULAR
+
+$scope:
+- É usado para disponibilizarmos dados para a VIEW;
+- Toda variavel dentro de uma 'function' é privada, ela não é acessado fora do escopo da função, por isso usamos o '$scope'.
+
+$http:
+- O que $http.get nos retorna é uma promessa de que ele buscará os dados. Sabemos que se essa promessa for cumprida, teremos os dados, caso contrário, 
+ficaremos a ver navios. Tecnicamente falando, o que $http.get retorna é uma promise.
+- $http.get nos retorna é uma promessa de que ele buscará os dados, é uma promessa, portanto devemos esperar, pois é requisição assincrona;
+- Quando essa promessa for cumprida, daí (then) podemos ter acesso aos dados retornados;
+- Quando gritamos para o Angular que queremos requisição AJAX ele faz a injeção de dependencia do $http;
+- É um serviço do angular para requisicoes AJAX, em angular usamos o $http
+
+###############################################################################################################################################
+
+
+
+
+
+############################################## $http - AJAX
+
+- O que $http.get nos retorna é uma promessa de que ele buscará os dados.
+- Requisição AJAX, ele nos facila MUITO.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Requisição HTTP -> Usando método do Angular/$http (jeito mais simples)
+-> É feito uma requisição GET passando a URL/End Point
+-> '.success' é quando a promise foi realizada, o parametro da function é o seu retorno;
+-> O retorno já vem com formato JSON, já montado para nós;
+-> Não precisa fazer 'retorno.data';
+-> '.error' é quando algo de errado aconteceu, nós pegamos o conteúdo desse erro no parametro do método também
+
+Exemplo:
+$http.get('/v1/fotos')
+    .success(function(retorno) {
+        console.log(retorno);
+        $scope.fotos = retorno; 
+    })
+    .error(function(erro) {
+        console.log(erro);
+    });
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Requisição HTTP -> Usando Promise (jeito mais longo)
+-> É um requisição assincrona, ou seja, ele fará uma PROMISE;
+-> Uma promise(promessa), ou seja, eu vou tentar fazer oq você quer, porém posso não retornar na sua chamada, por isso usamos THEN
+-> Then (daí) a partir do momento que você fez a promessa você fará o 'then' que é pegarmos o retorno da requisição e os erros possiveis
+-> *Quando essa promessa for cumprida, daí (then) podemos ter acesso aos dados retornados;
+-> Se a promessa for cumprida, no 'then' eu te retorno os dados que você me pediu
+-> cath usamos para pegar o erro se houver
+-> tanto no THEN quanto no CATCH nós recebemos atributo na function, esse atributo pode ser qualquer nome, porém por convenção
+no 'then' usamos para retorno pois é o sucesso, e no 'catch' para o erro, pois é onde cairá caso de algo errado.
+
+Exemplo:
+var promise = $http.get('/v1/fotos');
+    promise.then(function(retorno) {
+        $scope.fotos = retorno.data;
+    })
+    .catch(function(erro) {
+        console.log(erro)
+    });
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+###############################################################################################################################################
+
+
+
+
+
+############################################## ng-repeat="varr in atributo"
+
+- Usamos o 'ng-repeat' como se fosse um FOR para percorrer uma lista em nossa página
+- é usado como exemplo abaixo, onde 'fotos' é o atributo que veio no $scope (controller) e o 'foto' é o alias,
+ou seja, poderia ser qualquer nome, porém para usar os dados usamos o alias.
+
+Exemplo:
+ng-repeat="foto in fotos"
+
+###############################################################################################################################################
+
+
+
+
+
+
