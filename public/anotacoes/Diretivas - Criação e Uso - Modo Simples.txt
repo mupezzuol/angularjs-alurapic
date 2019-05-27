@@ -1,0 +1,41 @@
+############################################## CRIANDO DIRETIVA
+
+-> Criamos nossas próprias diretivas, aonde o navegador irá ler e entender o que queremos fazer através da nossa função
+
+*** Passo a Passo
+1. Criando uma diretiva para usarmos... (seria como se fosse um componente)
+2. Diretiva retorna um DDO (Directive Definition Object)
+3. Uma diretiva em Angular pode ser usada como Atributo, Elemento ou Comentário (AEC).
+4. Transclude -> Habilito para que os filhos das tags que conteram 'ng-transclude' da diretiva seja mantido os códigos dentra da div
+5. scope DDO -> é os atributos que pegamos da chamada da diretiva e enviaremos para nosso 'templateUrl'
+6. Chamamos nosso 'templateUrl'
+7. Retornamos nosso DDO com todas as configurações setadas
+
+###############################################################################################################################################
+
+Exemplo:
+
+###### CRIAÇÃO DA DIRETIVA
+angular.module('minhasDiretivas', [])
+    .directive('meuPainel', function () {
+        
+        var ddo = {};
+
+        ddo.restrict = "AE";//Atributo + Elemento... as chamadas dessas duas formas estão habilitadas
+        
+        ddo.transclude = true;
+
+        ddo.scope = {
+            titulo: '@titulo'//Qnd o atributo da VIEW é o mesmo nome que a propriedade que estamos criando aqui no scope, podemos utilizar somente '@' se quiser
+        };
+
+        ddo.templateUrl = 'js/directives/meu-painel.html';
+
+        return ddo;
+    });
+
+
+###### CHAMADA DA DIRETIVA
+<meu-painel ng-repeat="foto in fotos" titulo="{{foto.titulo}}">
+    <img class="img-responsive center-block" src="{{foto.url}}" alt="{{foto.titulo}}">
+</meu-painel>
