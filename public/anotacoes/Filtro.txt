@@ -1,0 +1,34 @@
+############################################## FILTER -> APLICANDO FILTRO
+
+ng-model="filtro": 
+-> Permite nós fazermos o two-way data binding
+-> two-way data binding eu posso ler/escrever em $scope, diferente da Angular Expression que somente escrita
+-> Na Controller adiciona um atributo no escopo para fazer um two-way data binding ($scope.filtro = ''), pois queremos um bidirecional, aquele que 
+é capaz de ler de $scope, inclusive atualizar seu valor de acordo com a entrada do usuário.
+
+ng-model-options="{ debounce: 500 }:
+-> Tempo que colocamos em linisegundos para postergar o tempo de busca do filtro, ou seja, um delay, para 
+a experiencia do usuário fluir melhor
+
+
+ng-repeat="foto in fotos | filter: filtro":
+-> Para filtrar no for, colocamos '| filter: filtro' e colocamos o nome do atributo que estamos usando para o filtro
+-> O angular gerencia essa busca de filtro de acordo com o nosso repeat
+
+
+EFEITO CSS:
+.classe-css.ng-leave-active:
+-> Usamos o '.ng-leave-active' para que quando o item deixar a lista ele aplicará esse CSS;
+-> Para usar os recursos do angular como este, devemos adicionar a dependencia de animação do angular (ngAnimate) em nosso módulo principal
+Exemplo:
+angular.module('moduloPrincipal', ['ngAnimate']);
+
+
+OBSERVAÇÕES GERAIS:
+-> O 'filter' do angular, vai procurar o valor do input em toda a propriedade do repeat, ou seja, no titulo, url, nome etc...
+
+
+###############################################################################################################################################
+
+Exemplo:
+

@@ -4,6 +4,7 @@ angular.module('angularpic').controller('FotosController', function($scope, $htt
 
     //Criando Array Vazio -> ng-repeat="foto in fotos" fotos é a variavel que retornamos para a página e usamos para fazer o 'for'
     $scope.fotos = [];
+    $scope.filtro = '';//two-way data binding, consigo usar para escrita/leitura pois uso o Filter na VIEW (usando como filtro)
 
     $http.get('/v1/fotos')
     .success(function(retorno) {
