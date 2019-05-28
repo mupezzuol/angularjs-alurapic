@@ -1,0 +1,61 @@
+############################################## ROUTE -> ngRoute -> routeProvider/locationProvider
+
+-> .config (adicionamos algumas configurações como por exemplos rotas)
+-> Adicionarmos alguns serviços do angular inejata para nós:
+routeProvider -> Controla as rotas, fazemos mapeamento de urls etc...
+locationProvider -> Usamos para habilitar rotas mais limpas, sem necessidade de usar o '#' na rota, como por exemplo '#/fotos' ficando somente '/fotos',
+vale lembrar que ao setarmos a rota em 'when' as rotas não contém o '#' mas no navegador devemos usar o '#', porem usando o locationProvider não precisa.
+*Seu back-end deve tratar essa questões das rotas do locationProvider para ser habilitado corretamente
+
+-> Colocarmos '<base href="/">' para mapear a rota principal da aplicação e funcionar o esquema do 'locationProvider'
+-> Para cada rota colcoamos a Url, Controller se existente etc...
+-> otherwise, caso seja acessado uma rota que não existe, ele irá retornar para a rota padrão do sistema, nesse caso é 'fotos', lembrar que deve ser usado 'redirectTo'
+
+
+*Vale lembrar que as rotas não recarregam página, o angular por trás dos pano faz um requisição AJAX e só colocar o conteúdo em nossa página index.html,
+porém toda nossa aplicação já foi carregada, o sistema de rota só joga na tela de acordo com o que queremos acessar
+
+
+
+###############################################################################################################################################
+
+Exemplo:
+
+// MÓDULO PRINCIPAL
+---------------------------------------------------------------------------------------
+angular.module('angularpic', ['minhasDiretivas', 'ngAnimate', 'ngRoute'])
+    .config(function ($routeProvider, $locationProvider) {
+        
+        $locationProvider.html5Mode(true);
+        
+        $routeProvider.when('/fotos', {
+            templateUrl: 'partials/principal.html',
+            controller: 'FotosController'
+        });
+
+        $routeProvider.when('/fotos/new', {
+            templateUrl: 'partials/foto.html'
+        });
+
+        $routeProvider.otherwise({redirectTo: '/fotos'});
+
+    });
+---------------------------------------------------------------------------------------
+
+
+// INDEX.HTML
+---------------------------------------------------------------------------------------
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="angularpic">
+<head>
+    <meta charset="UTF-8">
+    <base href="/">
+//... code here
+</head>
+<body>
+    <div class="container">
+        <ng-view></ng-view>
+    </div>
+</body>
+</html>
+---------------------------------------------------------------------------------------

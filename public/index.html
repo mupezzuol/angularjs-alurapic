@@ -3,12 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
+    <base href="/">
     <meta name="viewport" content="width=device-width">
     <title>AngularJS - Alurapic</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/efeitos.css">
     <script src="js/lib/angular.min.js"></script>
+    <script src="js/lib/angular-route.min.js"></script>
     <script src="js/lib/angular-animate.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/controllers/fotos-controller.js"></script>
@@ -16,33 +18,11 @@
     <script src="js/directives/meu-painel.html"></script>
 </head>
 
-<body ng-controller="FotosController">
+<body>
 
     <!-- INICIO Container Principal -->
     <div class="container">
-        <div class="jumbotron">
-            <h1>AngularPic</h1>
-            <p>Aprendendo AngularJS V1.3.15</p>
-        </div>
-
-        <!-- INICIO Filtro Pesquisa-->
-        <div class="row">
-            <div class="col-md-12">
-                <form>
-                    <input class="form-control" placeholder="Filtrar Fotos" ng-model="filtro" ng-model-options="{ debounce: 500 }">
-                </form>
-            </div>
-        </div>
-        <!-- FIM Filtro Pesquisa-->
-
-        <!-- INICIO Row Fotos-->
-        <div class="row">
-            <meu-painel class="col-md-2 painel-animado" ng-repeat="foto in fotos | filter: filtro" titulo="{{foto.titulo}}">
-                <img class="img-responsive center-block" src="{{foto.url}}" alt="{{foto.titulo}}">
-            </meu-painel>
-        </div>
-        <!-- FIM Row Fotos-->
-
+        <ng-view></ng-view>
     </div>
     <!-- FIM Container Principal -->
 
