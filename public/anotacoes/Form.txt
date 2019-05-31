@@ -1,0 +1,13 @@
+############################################## FORM
+
+-> Podemos usar os 'ng-model' para os inputs, para usarmos o 'two-way data binding';
+-> Usamos o 'ng-submit="submeter()"' na tag do 'form', para que quando houve um submit, ele chamará essa função,
+essa função que estará na Controller.
+Exemplo:
+$scope.submeter = function () {
+    console.log($scope.foto);
+};
+
+
+
+###############################################################################################################################################
