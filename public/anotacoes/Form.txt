@@ -46,5 +46,16 @@ Exemplo:
 
 
 
+--------- VALIDAÇÃO NO HTTP - MÉTODO POST
+-> Usando '$scope.formulario.$valid' na controller, eu só faço a requisição se todos meus validadores tiverem OK, aí o $valid retornar TRUE
+-> $valid é do escopo do angular para validar o formulário por completo
+
+
+--------- VALIDAÇÃO NO BOTÃO SALVAR
+-> Usando o 'ng-disabled="formulario.$invalid"' direto no botão, fazemos a seguinte validação:
+    - Se o formulário tiver inválido, com qualquer validação errada, ele retornará TRUE, consequentemente o botão ficará DISABLE 
+    - Se o formulário tiver válido, o retorno da condição será FALSE, portanto o botão ficará ENABLE
+
+
 
 ###############################################################################################################################################
