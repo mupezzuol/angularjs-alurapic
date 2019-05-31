@@ -1,5 +1,7 @@
 ############################################## FORM
 
+
+--------- GET STARTED
 -> Podemos usar os 'ng-model' para os inputs, para usarmos o 'two-way data binding';
 -> Usamos o 'ng-submit="submeter()"' na tag do 'form', para que quando houve um submit, ele chamará essa função,
 essa função que estará na Controller.
@@ -7,6 +9,41 @@ Exemplo:
 $scope.submeter = function () {
     console.log($scope.foto);
 };
+
+
+--------- INFORMAÇÕES
+-> Adicionando o 'novalidate' na tag 'form' nós desabilitamos a validação do HTML5, para que o Angular trabalhe nisso;
+Exemplo:
+Se você colcoar o 'required' não será o HTML5 que irá validar, e sim o AngularJS, porém trataremos essas validações
+
+
+--------- VALIDAÇÕES - 1
+-> Usamos a diretiva 'ng-show' para validar, quando a condição dela retornar TRUE, ela apresenta o conteúdo onde ela está presente;
+Exemplo:
+<span ng-show="formulario.$submitted && formulario.url.$error.required" class="form-control alert-danger">
+URL obrigatória
+</span>
+
+---- Explicação
+-> Dentro de 'ng-show' nós passamos o 'name' do formulário + 'name' do input + a injeção do Angular $error.
+-> Quando acessamos o '$error' podemos setar o que queremos validar, nesse caso validamos o 'required', se o campo foi preenchido
+-> 'formulario.$submitted' faz a validação do submit do forumulário, se o formulário NÃO foi submetido ele é falso, portanto não aparece msg de erro
+-> SE o formulário foi submetido && ele não foi preenchido, será apresentado esse span com erro.
+
+
+
+--------- VALIDAÇÕES - 2
+Exemplo:
+<input name="titulo" class="form-control" ng-model="foto.titulo" required ng-maxlength="20">
+<span ng-show="formulario.$submitted && formulario.titulo.$error.maxlength"
+    class="form-control alert-danger">
+        No máximo 20 caracteres!
+</span>
+
+---- Explicação
+-> Usando a diretiva 'ng-maxlength="20"' privamos o campo para 20 caracteres, porém precisamos acrescentar isso na condição em 'ng-show'
+-> Colocamos na condição 'formulario.titulo.$error.maxlength', se o Error encontrado for de maxlength ele retorna TRUE
+
 
 
 
