@@ -66,3 +66,35 @@ Exemplo:
 
 
 ###############################################################################################################################################
+
+
+
+
+
+
+
+
+
+
+############################################## REMOVER
+
+-> $scope.fotos.indexOf(foto) Pego o indice da foto respectiva
+-> $scope.fotos.splice(indiceDaFoto, 1) Deleto a foto respectiva... como o slice funciona:
+- Passamos o indice para ser removido a partir do indice, e depois passamos quantos elementos ele irá remover, no caso 1 elemento só que é o indice passado
+-> Dessa forma nossa lista de fotos do $scope será atualizada, e irá parecer q atualizamos a página sem fazer requisição
+
+Exemplo:
+$scope.remover = function(foto){
+        /// URL -> v1/fotos/IDdaFotoQueDesejamosApagar
+        $http.delete('/v1/fotos/' + foto._id)
+        .success(function(){
+            var indiceDaFoto = $scope.fotos.indexOf(foto);
+            $scope.fotos.splice(indiceDaFoto, 1);//Deleto a foto a partir do índice X e peço para remover 1 elemento que seria a foto respectiva
+
+            console.log('Foto ' + foto.titulo + ' removida com sucesso!');
+        })
+        .error(function(){
+            console.log('Não foi possível apagar a foto ' + foto.titulo);
+        });
+    };
+    ###############################################################################################################################################
