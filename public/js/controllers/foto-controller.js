@@ -3,6 +3,7 @@ angular.module('angularpic')
 
         //two-way data binding
         $scope.foto = {};
+        $scope.mensagem = '';
 
         //Quando meu form for submetido 'ng-submit="submeter()"' será chamado essa função
         $scope.submeter = function () {
@@ -10,9 +11,10 @@ angular.module('angularpic')
                 $http.post('v1/fotos', $scope.foto)
                 .success(function(){
                     $scope.foto = {};
-                    console.log('Foto cadastrada com sucesso!');
+                    $scope.mensagem = 'Foto cadastrada com sucesso!';
                 })
                 .error(function(erro){
+                    $scope.mensagem = 'Algo deu errado! Não foi possível cadastrar a foto.';
                     console.log(erro);
                 });
             }

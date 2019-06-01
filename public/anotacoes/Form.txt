@@ -57,5 +57,12 @@ Exemplo:
     - Se o formulário tiver válido, o retorno da condição será FALSE, portanto o botão ficará ENABLE
 
 
+--------- VALIDAÇÃO DE MENSAGEM PARA O USUÁRIO
+-> Usando 'ng-show="mensagem.length"' nós validamos, se for verdade a condição aparece a mensage, caso seja false ele não exibe;
+-> ng-show retorna o conteúdo se for TRUE, se for FALSE ele não faz nada;
+-> No JavaScript um objeto/var/array vazio é retornado como FALSE, e se tiver qualquer coisa como TRUE, por isso, se o conteúdo da variavel
+'mensagem' conter algo, ele exibe a mensagem.
+
+
 
 ###############################################################################################################################################
