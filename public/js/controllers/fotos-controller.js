@@ -15,4 +15,9 @@ angular.module('angularpic').controller('FotosController', function($scope, $htt
         console.log(erro);
     });
 
+
+    $scope.remover = function(foto){
+        console.log(foto);
+    };
+
 });
