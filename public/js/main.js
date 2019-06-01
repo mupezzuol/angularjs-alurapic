@@ -15,6 +15,12 @@ angular.module('angularpic', ['minhasDiretivas', 'ngAnimate', 'ngRoute'])
             controller: 'FotoController'
         });
 
+        //Usamos ':variavel' para identificar que podemos passar oq quisermos
+        $routeProvider.when('/fotos/edit/:fotoId', {
+            templateUrl: 'partials/foto.html',
+            controller: 'FotoController'
+        });
+
         //Qualquer URL diferente das de cima, irá para nossa 'home'
         $routeProvider.otherwise({redirectTo: '/fotos'});
 
