@@ -1,0 +1,10 @@
+############################################## Serviços - Criando Serviços com $resource para ajudar nas requisições http
+
+
+-> Para Criar um serviço é preciso da palavra factory que sempre retorna um objeto
+-> 
+
+
+
+
+###############################################################################################################################################
