@@ -1,0 +1,19 @@
+############################################## NG-OPTIONS
+
+-> ng-options é uma diretiva usada em 'select' ou em outros casos;
+-> Podemos adicionar algumas verificações mais especificas na diretiva como por exemplo:
+Exemplo:
+ng-options="grupo._id as grupo.nome for grupo in grupos">
+
+-> grupo._id É o valor que será pego no input no campo 'value'
+-> grupo.nome É o valor que será colocado dentro das tags options para aparecer para o usuário
+-> grupo in grupos É o for, grupo é o alias, e 'grupos' é a lista que vem da Controller;
+-> para cada iteração é adicionado um novo options, como demonstrado abaixo:
+
+Exemplo de options para cada iteração da lista:
+COMO É: <option value="grupo._id">grupo.nome</option>
+COMO FICA: <option value="1">futebol</option>
+
+###############################################################################################################################################
+
+

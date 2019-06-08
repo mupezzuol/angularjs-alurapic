@@ -37,4 +37,15 @@ angular.module('minhasDiretivas', [])
         ddo.template = '<img class="img-responsive center-block" src="{{url}}" alt="{{titulo}}">';
 
         return ddo;
+    })
+    .directive('meuBotaoPerigo', function() {
+        var ddo = {};
+        ddo.restrict = "E";
+        ddo.scope = {
+            nome: '@',
+            acao : '&'//Angular possui o modificador &, que permite fazer binding para uma referência.. Dessa forma não passamos String, e sim uma expressão/referencia
+        }
+        ddo.template = '<button class="btn btn-danger btn-block" ng-click="acao()">{{nome}}</button>';
+
+        return ddo;
     });

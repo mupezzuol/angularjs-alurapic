@@ -1,0 +1,17 @@
+############################################## NG-OPTIONS
+
+
+-> ng-controller - Posso especificar qual controller será usada aqui nessa tag, caso não existam atributos na controller, o angular
+irá procurar na controller pai da página
+-> ng-model - É o nome do atributo do objeto que é retornado pela chamada ajax
+-> (grupo.nome | uppercase) - Usando dessa forma, colocamos em caixa alta o nome que será exibido nas options para o usuário
+
+Exemplo:
+<select name="grupo" class="form-control" required
+    ng-controller="GruposController"
+    ng-model="foto.grupo"
+    ng-options="grupo._id as (grupo.nome | uppercase) for grupo in grupos">
+    <option value="">Escolha um grupo</option>
+</select>
+
+###############################################################################################################################################
