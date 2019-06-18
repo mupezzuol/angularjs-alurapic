@@ -38,14 +38,26 @@ angular.module('minhasDiretivas', [])
 
         return ddo;
     })
-    .directive('meuBotaoPerigo', function() {
+    .directive('meuBotaoPerigo', function () {
         var ddo = {};
         ddo.restrict = "E";
         ddo.scope = {
             nome: '@',
-            acao : '&'//Angular possui o modificador &, que permite fazer binding para uma referência.. Dessa forma não passamos String, e sim uma expressão/referencia
+            acao: '&'//Angular possui o modificador &, que permite fazer binding para uma referência.. Dessa forma não passamos String, e sim uma expressão/referencia
         }
         ddo.template = '<button class="btn btn-danger btn-block" ng-click="acao()">{{nome}}</button>';
+
+        return ddo;
+    })
+    .directive('meuFocus', function () {
+        var ddo = {};
+        ddo.restrict = "A";
+        // não tem mais scope
+        ddo.link = function (scope, element) {
+            scope.$on('fotoCadastrada', function () {
+                element[0].focus();
+            });
+        };
 
         return ddo;
     });

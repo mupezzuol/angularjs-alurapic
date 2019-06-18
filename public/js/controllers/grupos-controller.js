@@ -11,7 +11,4 @@ angular.module('angularpic').controller('GruposController', function ($scope, $h
         });
 
 
-
-
-
 });
